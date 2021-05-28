@@ -15,6 +15,13 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    #flash[:alert] = "Group deleted"
+    redirect_to groups_path, alert: "group deleted"
+  end
+
   def update
     @group = Group.find(params[:id])
     @group.update(group_params)
